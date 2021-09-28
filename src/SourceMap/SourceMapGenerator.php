@@ -13,6 +13,7 @@
 namespace ScssPhp\ScssPhp\SourceMap;
 
 use ScssPhp\ScssPhp\Exception\CompilerException;
+use ScssPhp\ScssPhp\FileReader\FileReaderInterface;
 
 /**
  * Source Map Generator
@@ -103,10 +104,16 @@ class SourceMapGenerator
     private $options;
 
     /**
+     * @var FileReaderInterface
+     */
+    private $fileReader;
+
+    /**
      * @phpstan-param array{sourceRoot?: string, sourceMapFilename?: string|null, sourceMapURL?: string|null, sourceMapWriteTo?: string|null, outputSourceFiles?: bool, sourceMapRootpath?: string, sourceMapBasepath?: string} $options
      */
-    public function __construct(array $options = [])
+    public function __construct(FileReaderInterface $fileReader, array $options = [])
     {
+        $this->fileReader = $fileReader;
         $this->options = array_merge($this->defaultOptions, $options);
         $this->encoder = new Base64VLQ();
     }
@@ -240,7 +247,7 @@ class SourceMapGenerator
         $content = [];
 
         foreach ($this->sources as $sourceFile) {
-            $content[] = file_get_contents($sourceFile);
+            $content[] = $this->fileReader->getContent($sourceFile);
         }
 
         return $content;

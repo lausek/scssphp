@@ -19,6 +19,8 @@ use ScssPhp\ScssPhp\Exception\CompilerException;
 use ScssPhp\ScssPhp\Exception\ParserException;
 use ScssPhp\ScssPhp\Exception\SassException;
 use ScssPhp\ScssPhp\Exception\SassScriptException;
+use ScssPhp\ScssPhp\FileReader\FileReaderInterface;
+use ScssPhp\ScssPhp\FileReader\FilesystemReader;
 use ScssPhp\ScssPhp\Formatter\Compressed;
 use ScssPhp\ScssPhp\Formatter\Expanded;
 use ScssPhp\ScssPhp\Formatter\OutputBlock;
@@ -327,6 +329,11 @@ class Compiler
     private $warnedChildFunctions = [];
 
     /**
+     * @var FileReaderInterface
+     */
+    private $fileReader;
+
+    /**
      * Constructor
      *
      * @param array|null $cacheOptions
@@ -344,6 +351,7 @@ class Compiler
         }
 
         $this->logger = new StreamLogger(fopen('php://stderr', 'w'), true);
+        $this->fileReader = new FilesystemReader();
     }
 
     /**
@@ -470,8 +478,8 @@ class Compiler
         $this->importedFiles = [];
         $this->resolvedImports = [];
 
-        if (!\is_null($path) && is_file($path)) {
-            $path = realpath($path) ?: $path;
+        if (!\is_null($path) && $this->fileReader->isFile($path)) {
+            $path = $this->fileReader->getKey($path) ?: $path;
             $this->currentDirectory = dirname($path);
             $this->rootDirectory = $this->currentDirectory;
         } else {
@@ -508,7 +516,7 @@ class Compiler
                     $sourceMapGenerator = $this->sourceMap;
                     $this->sourceMap = self::SOURCE_MAP_FILE;
                 } elseif ($this->sourceMap !== self::SOURCE_MAP_NONE) {
-                    $sourceMapGenerator = new SourceMapGenerator($this->sourceMapOptions);
+                    $sourceMapGenerator = new SourceMapGenerator($this->fileReader, $this->sourceMapOptions);
                 }
             }
 
@@ -578,7 +586,7 @@ class Compiler
     {
         // check if any dependency file changed since the result was compiled
         foreach ($result->getParsedFiles() as $file => $mtime) {
-            if (! is_file($file) || filemtime($file) !== $mtime) {
+            if (! $this->fileReader->isFile($file) || $this->fileReader->getTimestamp($file) !== $mtime) {
                 return false;
             }
         }
@@ -5358,8 +5366,8 @@ EOL;
      */
     public function addParsedFile($path)
     {
-        if (! \is_null($path) && is_file($path)) {
-            $this->parsedFiles[realpath($path)] = filemtime($path);
+        if (! \is_null($path) && $this->fileReader->isFile($path)) {
+            $this->parsedFiles[$this->fileReader->getKey($path)] = $this->fileReader->getTimestamp($path);
         }
     }
 
@@ -5598,7 +5606,7 @@ EOL;
     {
         $this->pushCallStack('import ' . $this->getPrettyPath($path));
         // see if tree is cached
-        $realPath = realpath($path);
+        $realPath = $this->fileReader->getKey($path);
 
         if (substr($path, -5) === '.sass') {
             $this->sourceIndex = \count($this->sourceNames);
@@ -5614,7 +5622,7 @@ EOL;
 
             $tree = $this->importCache[$realPath];
         } else {
-            $code   = file_get_contents($path);
+            $code   = $this->fileReader->getContent($path);
             $parser = $this->parserFactory($path);
             $tree   = $parser->parse($code);
 
@@ -5827,11 +5835,11 @@ EOL;
 
         $candidates = [];
 
-        if (is_file($partial)) {
+        if ($this->fileReader->isFile($partial)) {
             $candidates[] = $partial;
         }
 
-        if (is_file($path)) {
+        if ($this->fileReader->isFile($path)) {
             $candidates[] = $path;
         }
 
@@ -6095,7 +6103,7 @@ EOL;
                 continue;
             }
 
-            if (realpath($file) === $name) {
+            if ($this->fileReader->getKey($file) === $name) {
                 throw $this->error('An @import loop has been found: %s imports %s', $file, basename($file));
             }
         }
@@ -10011,7 +10019,7 @@ will be an error in future versions of Sass.\n         on line $line of $fname";
         $listParts = [];
 
         foreach ($matches as $match) {
-            if (! is_file($match)) {
+            if (! $this->fileReader->isFile($match)) {
                 continue;
             }
 

@@ -393,6 +393,19 @@ class Compiler
     }
 
     /**
+     * TODO
+     *
+     *
+     * @param FileReaderInterface $fileReader
+     *
+     * @return void
+     */
+    public function setFileReader(FileReaderInterface $fileReader): void
+    {
+        $this->fileReader = $fileReader;
+    }
+
+    /**
      * Set an alternative error output stream, for testing purpose only
      *
      * @param resource $handle

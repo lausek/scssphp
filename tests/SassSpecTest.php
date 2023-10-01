@@ -13,6 +13,7 @@
 namespace ScssPhp\ScssPhp\Tests;
 
 use PHPUnit\Framework\TestCase;
+use ScssPhp\ScssPhp\Ast\Sass\Statement\Stylesheet;
 use ScssPhp\ScssPhp\Compiler;
 use ScssPhp\ScssPhp\Exception\SassException;
 use ScssPhp\ScssPhp\Logger\StreamLogger;
@@ -24,11 +25,11 @@ use ScssPhp\ScssPhp\Logger\StreamLogger;
  */
 class SassSpecTest extends TestCase
 {
-    protected static $exclusionList;
-    protected static $warningExclusionList;
+    private static $exclusionList;
+    private static $warningExclusionList;
 
-    protected static $fileExclusionList = __DIR__ . '/specs/sass-spec-exclude.txt';
-    protected static $fileWarningExclusionList = __DIR__ . '/specs/sass-spec-exclude-warning.txt';
+    private static $fileExclusionList = __DIR__ . '/specs/sass-spec-exclude.txt';
+    private static $fileWarningExclusionList = __DIR__ . '/specs/sass-spec-exclude-warning.txt';
     private $dirToClean;
 
     /**
@@ -55,17 +56,17 @@ class SassSpecTest extends TestCase
      */
     protected function getExclusionList()
     {
-        if (is_null(static::$exclusionList)) {
-            if (!file_exists(static::$fileExclusionList)) {
-                static::$exclusionList = [];
+        if (is_null(self::$exclusionList)) {
+            if (!file_exists(self::$fileExclusionList)) {
+                self::$exclusionList = [];
             } else {
-                static::$exclusionList = file(static::$fileExclusionList);
-                static::$exclusionList = array_map('trim', static::$exclusionList);
-                static::$exclusionList = array_filter(static::$exclusionList);
+                self::$exclusionList = file(self::$fileExclusionList);
+                self::$exclusionList = array_map('trim', self::$exclusionList);
+                self::$exclusionList = array_filter(self::$exclusionList);
             }
         }
 
-        return static::$exclusionList;
+        return self::$exclusionList;
     }
 
     /**
@@ -99,17 +100,17 @@ class SassSpecTest extends TestCase
      */
     protected function getWarningExclusionList()
     {
-        if (is_null(static::$warningExclusionList)) {
-            if (!file_exists(static::$fileWarningExclusionList)) {
-                static::$warningExclusionList = [];
+        if (is_null(self::$warningExclusionList)) {
+            if (!file_exists(self::$fileWarningExclusionList)) {
+                self::$warningExclusionList = [];
             } else {
-                static::$warningExclusionList = file(static::$fileWarningExclusionList);
-                static::$warningExclusionList = array_map('trim', static::$warningExclusionList);
-                static::$warningExclusionList = array_filter(static::$warningExclusionList);
+                self::$warningExclusionList = file(self::$fileWarningExclusionList);
+                self::$warningExclusionList = array_map('trim', self::$warningExclusionList);
+                self::$warningExclusionList = array_filter(self::$warningExclusionList);
             }
         }
 
-        return static::$warningExclusionList;
+        return self::$warningExclusionList;
     }
 
     /**
@@ -119,12 +120,12 @@ class SassSpecTest extends TestCase
      */
     protected function resetExclusionList()
     {
-        static::$exclusionList = [];
-        static::$warningExclusionList = [];
-        file_put_contents(static::$fileExclusionList, '');
-        file_put_contents(static::$fileWarningExclusionList, '');
+        self::$exclusionList = [];
+        self::$warningExclusionList = [];
+        file_put_contents(self::$fileExclusionList, '');
+        file_put_contents(self::$fileWarningExclusionList, '');
 
-        return static::$exclusionList;
+        return self::$exclusionList;
     }
 
     /**
@@ -134,10 +135,10 @@ class SassSpecTest extends TestCase
      */
     protected function appendToExclusionList($testName)
     {
-        static::$exclusionList[] = $this->canonicalTestName($testName);
-        file_put_contents(static::$fileExclusionList, implode("\n", static::$exclusionList) . "\n");
+        self::$exclusionList[] = $this->canonicalTestName($testName);
+        file_put_contents(self::$fileExclusionList, implode("\n", self::$exclusionList) . "\n");
 
-        return static::$exclusionList;
+        return self::$exclusionList;
     }
 
     /**
@@ -147,16 +148,16 @@ class SassSpecTest extends TestCase
      */
     protected function appendToWarningExclusionList($testName)
     {
-        static::$warningExclusionList[] = $this->canonicalTestName($testName);
-        file_put_contents(static::$fileWarningExclusionList, implode("\n", static::$warningExclusionList) . "\n");
+        self::$warningExclusionList[] = $this->canonicalTestName($testName);
+        file_put_contents(self::$fileWarningExclusionList, implode("\n", self::$warningExclusionList) . "\n");
 
-        return static::$warningExclusionList;
+        return self::$warningExclusionList;
     }
 
     /**
      * Do some normalization on css output, for comparison purpose
-     * @param $css
-     * @return string|string[]|null
+     * @param string $css
+     * @return string
      */
     protected function normalizeCssOutput($css)
     {
@@ -245,12 +246,18 @@ class SassSpecTest extends TestCase
         $compiler = new Compiler();
 
         list($options, $scss, $includes, $inputDir) = $input;
-        list($css, $warning, $error, $alternativeCssOutputs) = $output;
+        list($css, $warning, $error, $alternativeCssOutputs, $alternativeWarnings) = $output;
 
         $fullInputs = $scss . "\n" . implode("\n", $includes);
 
         if (false !== strpos($fullInputs, '@forward ') || false !== strpos($fullInputs, '@use ')) {
             $this->markTestSkipped('Sass modules are not supported.');
+        }
+
+        // Our new parser is a port of the dart-sass one, so it should be able to parse all non-error specs
+        // without triggering a parsing error.
+        if (!$error && !preg_match('/:todo:\n *+- dart-sass\n/', $options) && !\in_array($this->canonicalTestName($name), ['directives/forward/escaped', 'directives/use/escaped', 'values/calculation/calc/no_operator/interpolation/line_noise'])) {
+            Stylesheet::parseScss($scss, null, 'input.scss');
         }
 
         if (! getenv('TEST_SASS_SPEC') && $this->matchExclusionList($name, $this->getExclusionList())) {
@@ -294,7 +301,7 @@ class SassSpecTest extends TestCase
             mkdir($basedir, 0777, true);
         }
 
-        $inputPath = $basedir.'/input.scss';
+        $inputPath = $basedir . '/input.scss';
         file_put_contents($inputPath, $scss);
 
         // SassSpec use @import "core_functions/.../..."
@@ -308,6 +315,11 @@ class SassSpecTest extends TestCase
                 try {
                     $actual = $compiler->compileString($scss, $inputPath)->getCss();
                 } catch (\Exception $e) {
+                    $this->appendToExclusionList($name);
+                    fclose($fp_err_stream);
+                    $this->assertNull(null);
+                    return;
+                } catch (\Throwable $e) {
                     $this->appendToExclusionList($name);
                     fclose($fp_err_stream);
                     $this->assertNull(null);
@@ -342,23 +354,30 @@ class SassSpecTest extends TestCase
                 }
             }
 
+            if (rtrim($output) !== rtrim($warning) && $alternativeWarnings) {
+                foreach ($alternativeWarnings as $alternativeWarning) {
+                    if (rtrim($output) === rtrim($alternativeWarning)) {
+                        $warning = $alternativeWarning;
+                        break;
+                    }
+                }
+            }
+
             if (getenv('BUILD')) {
                 if ($css !== $actual) {
                     $this->appendToExclusionList($name);
-                } elseif ($warning && rtrim($output) !== rtrim($warning)) {
+                } elseif (rtrim($output) !== rtrim($warning)) {
                     $this->appendToWarningExclusionList($name);
                 }
                 $this->assertNull(null);
             } else {
                 $this->assertEquals($css, $actual, $name);
 
-                if ($warning) {
-                    if (
-                        getenv('TEST_SASS_SPEC') ||
-                        ! $this->matchExclusionList($name, $this->getWarningExclusionList())
-                    ) {
-                        $this->assertEquals(rtrim($warning), rtrim($output));
-                    }
+                if (
+                    getenv('TEST_SASS_SPEC') ||
+                    ! $this->matchExclusionList($name, $this->getWarningExclusionList())
+                ) {
+                    $this->assertEquals(rtrim($warning), rtrim($output));
                 }
             }
         } else {
@@ -370,6 +389,8 @@ class SassSpecTest extends TestCase
                     // TODO assert the error message ?
                     // Keep the test
                 } catch (\Exception $e) {
+                    $this->appendToExclusionList($name);
+                } catch (\Throwable $e) {
                     $this->appendToExclusionList($name);
                 }
                 $this->assertNull(null);
@@ -389,6 +410,27 @@ class SassSpecTest extends TestCase
         $css = str_replace(",\n", ", ", $css);
 
         return $css;
+    }
+
+    private static function prepareWarning($warning, $baseTestName, $baseDir)
+    {
+        // Remove normalized absolute paths present in some warnings and errors
+        // due to https://github.com/sass/libsass/issues/2861
+        // Our own implementation always uses the expected relative path.
+        $baseTestDir = dirname($baseTestName);
+        $baseTestDir = preg_replace(
+            '/(^|\/)libsass-[a-z]+-issues(\/|$)/',
+            '$1libsass-issues$2',
+            $baseTestDir
+        );
+        $warning = str_replace(
+            rtrim("/sass/spec/$baseTestDir/$baseDir", '/') . '/',
+            '',
+            $warning
+        );
+
+        // Normalize paths in the output, as done by the official runner
+        return preg_replace('/[-_\/a-zA-Z0-9]+(input\.s[ca]ss)/', '$1', $warning);
     }
 
     /**
@@ -438,6 +480,7 @@ class SassSpecTest extends TestCase
                 $options   = '';
                 $error     = '';
                 $warning   = '';
+                $alternativeWarnings = [];
                 $hasInput  = false;
                 $hasOutput = false;
                 $baseDir = '';
@@ -503,7 +546,15 @@ class SassSpecTest extends TestCase
                             break;
 
                         case 'warning':
-                            $warning = $part;
+                            $warning = self::prepareWarning($part, $baseTestName, $baseDir);
+                            break;
+
+                        case 'warning-libsass':
+                            $alternativeWarnings['libsass'] = self::prepareWarning($part, $baseTestName, $baseDir);
+                            break;
+
+                        case 'warning-dart-sass':
+                            $alternativeWarnings['dart-sass'] = self::prepareWarning($part, $baseTestName, $baseDir);
                             break;
 
                         default:
@@ -535,28 +586,11 @@ class SassSpecTest extends TestCase
                     $options = $generalOptions;
                 }
 
-                // Remove normalized absolute paths present in some warnings and errors
-                // due to https://github.com/sass/libsass/issues/2861
-                // Our own implementation always uses the expected relative path.
-                if ($warning) {
-                    $baseTestDir = dirname($baseTestName);
-                    $baseTestDir = preg_replace(
-                        '/(^|\/)libsass-[a-z]+-issues(\/|$)/',
-                        '$1libsass-issues$2',
-                        $baseTestDir
-                    );
-                    $warning = str_replace(
-                        rtrim("/sass/spec/$baseTestDir/$baseDir", '/') . '/',
-                        '',
-                        $warning
-                    );
-                }
-
                 $sizeLimit = 1024 * 1024;
                 $test = [
                     $baseTestName . $subNname,
                     [$options, $input, $includes, $baseDir],
-                    [$output, $warning, $error, $alternativeOutputs]
+                    [$output, $warning, $error, $alternativeOutputs, $alternativeWarnings]
                 ];
 
                 if ($hasInput && !$hasSupportedInput) {

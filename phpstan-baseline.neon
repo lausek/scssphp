@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Cannot cast T of array\\<string\\|Stringable\\>\\|string\\|Stringable\\|null to string\\.$#"
+			count: 1
+			path: src/Ast/Css/CssValue.php
+
+		-
 			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$children type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Block.php
@@ -14,6 +19,81 @@ parameters:
 			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$selectors type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Block.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\AtRootBlock\\:\\:\\$selector type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/AtRootBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\AtRootBlock\\:\\:\\$with type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/AtRootBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\CallableBlock\\:\\:\\$args type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/CallableBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\ContentBlock\\:\\:\\$child type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/ContentBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\DirectiveBlock\\:\\:\\$name type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/DirectiveBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\DirectiveBlock\\:\\:\\$value type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/DirectiveBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\EachBlock\\:\\:\\$list type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/EachBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\ElseifBlock\\:\\:\\$cond type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/ElseifBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\ForBlock\\:\\:\\$end type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/ForBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\ForBlock\\:\\:\\$start type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/ForBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\IfBlock\\:\\:\\$cond type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/IfBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\MediaBlock\\:\\:\\$queryList type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/MediaBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\MediaBlock\\:\\:\\$value type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/MediaBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\NestedPropertyBlock\\:\\:\\$prefix type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/NestedPropertyBlock.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\\\WhileBlock\\:\\:\\$cond type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Block/WhileBlock.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Cache\\:\\:cacheName\\(\\) has parameter \\$options with no value type specified in iterable type array\\.$#"
@@ -31,12 +111,12 @@ parameters:
 			path: src/Cache.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$data of function unserialize expects string, string\\|false given\\.$#"
 			count: 1
 			path: src/Cache.php
 
 		-
-			message: "#^Parameter \\#1 \\$variable_representation of function unserialize expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function sha1 expects string, string\\|false given\\.$#"
 			count: 1
 			path: src/Cache.php
 
@@ -44,156 +124,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: src/Cache.php
-
-		-
-			message: "#^Result of \\|\\| is always false\\.$#"
-			count: 3
-			path: src/Colors.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$hasValue\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$name\\.$#"
-			count: 3
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$prefix\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$selector\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$value\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$declarationScopeParent\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$marker\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$parentStore\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$selectors\\.$#"
-			count: 3
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$children\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$name\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$sourceColumn\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Access to an undefined property object\\:\\:\\$sourceIndex\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Array \\(array\\<ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\>\\) does not accept ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Array \\(array\\<string, ScssPhp\\\\ScssPhp\\\\Block\\>\\) does not accept key 0\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Array \\(array\\<string, int\\>\\) does not accept int\\|false\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Array \\(array\\<string, int\\>\\) does not accept key 0\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access offset 1 on array\\<int, string\\>\\|false\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access property \\$assignSeparator on ScssPhp\\\\ScssPhp\\\\Formatter\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access property \\$children on ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null\\.$#"
-			count: 6
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access property \\$parent on ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access property \\$selectors on ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot access property \\$tagSeparator on ScssPhp\\\\ScssPhp\\\\Formatter\\|string\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot call method customProperty\\(\\) on ScssPhp\\\\ScssPhp\\\\Formatter\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot call method format\\(\\) on ScssPhp\\\\ScssPhp\\\\Formatter\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot call method generateJson\\(\\) on ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\|null\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Cannot call method property\\(\\) on ScssPhp\\\\ScssPhp\\\\Formatter\\|string\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^If condition is always false\\.$#"
-			count: 1
-			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:HWBtoRGB\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -206,22 +136,17 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) has parameter \\$color with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) has parameter \\$amount with no typehint specified\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) has parameter \\$color with no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:adjustHsl\\(\\) has parameter \\$idx with no typehint specified\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:alterColor\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -231,12 +156,37 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:appendRootDirective\\(\\) has parameter \\$allowed with no value type specified in iterable type array\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArguments\\(\\) has parameter \\$argDef with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArguments\\(\\) has parameter \\$argValues with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArgumentsToDeclaration\\(\\) has parameter \\$namedArgs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArgumentsToDeclaration\\(\\) has parameter \\$positionalArgs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArgumentsToDeclaration\\(\\) has parameter \\$prototype with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:applyArgumentsToDeclaration\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -266,22 +216,12 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:assertList\\(\\) should return array but returns array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:assertMap\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:assertMap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:assertMap\\(\\) should return array but returns array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -336,6 +276,11 @@ parameters:
 			path: src/Compiler.php
 
 		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:checkPrototypeMatches\\(\\) has parameter \\$prototype with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:checkSelectorArgType\\(\\) has parameter \\$arg with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -381,22 +326,12 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:coercePercent\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:coerceString\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:coerceString\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:coerceString\\(\\) should return array but returns array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -436,22 +371,12 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compactEnv\\(\\) should return array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\>&nonEmpty but returns array\\<int, ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\>\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileChild\\(\\) has parameter \\$child with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileChild\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileChild\\(\\) should return array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number\\|null but return statement is missing\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -536,27 +461,12 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileWith\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:cssValidArg\\(\\) has parameter \\$arg with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:cssValidArg\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:error\\(\\) has parameter \\$args with no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:errorArgsNumber\\(\\) has parameter \\$ExpectedArgs with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -598,6 +508,16 @@ parameters:
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:evalSelectors\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:evaluateArguments\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:evaluateArguments\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
 			path: src/Compiler.php
 
 		-
@@ -686,11 +606,6 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:filterScopeWithWithout\\(\\) should return ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock but returns ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:filterWithWithout\\(\\) has parameter \\$with with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -712,11 +627,6 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:fixColor\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:flattenList\\(\\) has parameter \\$list with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -761,6 +671,11 @@ parameters:
 			path: src/Compiler.php
 
 		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:getArgumentListKeywords\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:getBuiltinFunction\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -777,11 +692,6 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:getSelectorArg\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:getSourcePosition\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -807,11 +717,6 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:glueFunctionSelectors\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:handleImportLoop\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -906,32 +811,37 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:libCounter\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:libCounter\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:libHsl\\(\\) has parameter \\$funcName with no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:libRgb\\(\\) has parameter \\$funcName with no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:listSeparatorForJoin\\(\\) has parameter \\$list1 with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:listSeparatorForJoin\\(\\) has parameter \\$sep with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mapGet\\(\\) has parameter \\$key with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mapGet\\(\\) has parameter \\$map with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mapGet\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mapGetEntryIndex\\(\\) has parameter \\$key with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mapGetEntryIndex\\(\\) has parameter \\$map with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1006,6 +916,21 @@ parameters:
 			path: src/Compiler.php
 
 		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mergeMaps\\(\\) has parameter \\$map1 with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mergeMaps\\(\\) has parameter \\$map2 with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mergeMaps\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mergeMediaTypes\\(\\) has parameter \\$type1 with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -1032,6 +957,41 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mergeParts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyMap\\(\\) has parameter \\$keys with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyMap\\(\\) has parameter \\$map with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyMap\\(\\) has parameter \\$modify with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyMap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyNestedMap\\(\\) has parameter \\$map with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyNestedMap\\(\\) has parameter \\$modify with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:modifyNestedMap\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1206,6 +1166,11 @@ parameters:
 			path: src/Compiler.php
 
 		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:parseFunctionPrototype\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:prependSelectors\\(\\) has parameter \\$parts with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -1227,11 +1192,6 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:pushExtends\\(\\) has parameter \\$origin with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:pushExtends\\(\\) has parameter \\$target with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1266,17 +1226,17 @@ parameters:
 			path: src/Compiler.php
 
 		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:selectFunctionPrototype\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:selectorAppend\\(\\) has parameter \\$selectors with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:selectorAppend\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:setVariables\\(\\) has parameter \\$variables with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1321,11 +1281,6 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:throwError\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:toBool\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
@@ -1337,6 +1292,16 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:toRGB\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:tryMap\\(\\) has parameter \\$item with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:tryMap\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1356,22 +1321,12 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Negated boolean expression is always false\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Offset 2 does not exist on array\\(\\)\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:verifyPrototype\\(\\) has parameter \\$prototype with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^PHPDoc tag @throws with type ScssPhp\\\\ScssPhp\\\\Exception\\\\SassException is not subtype of Throwable$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$block of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:flattenSelectors\\(\\) expects ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock, ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null given\\.$#"
+			message: "#^Offset 2 does not exist on array\\{\\}\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1381,42 +1336,17 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#1 \\$dimension of class ScssPhp\\\\ScssPhp\\\\Node\\\\Number constructor expects float\\|int, float\\|int\\|string given\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$envs of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:extractEnv\\(\\) expects array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\>&nonEmpty, array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$envs of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:extractEnv\\(\\) expects non\\-empty\\-array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\>, array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\> given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#1 \\$envs of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:extractEnv\\(\\) expects array\\<ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\>&nonEmpty, array\\<int, ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function base_convert expects string, \\(float\\|int\\) given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, string\\|false given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function str_pad expects string, int given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$name of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:handleImportLoop\\(\\) expects string, string\\|false given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$number of function base_convert expects string, \\(float\\|int\\) given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$number of function round expects float, float\\|int\\|string given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function round expects float\\|int, float\\|int\\|string given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1432,31 +1362,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$rawPath of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileImport\\(\\) expects array, array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number given\\.$#"
-			count: 2
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$scope of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:completeScope\\(\\) expects ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock, ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$scope of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:filterScopeWithWithout\\(\\) expects ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock, ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$scope of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:mediaParent\\(\\) expects ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock, ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$selectors of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:evalSelectors\\(\\) expects array, array\\|null given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#1 \\$stack of function array_shift expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1466,27 +1371,17 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function str_pad expects string, int\\<0, 9999999\\> given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#2 \\$baseDir of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:resolveImportPath\\(\\) expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$value of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileValue\\(\\) expects array\\|ScssPhp\\\\ScssPhp\\\\Node\\\\Number, array\\|string given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
 			message: "#^Parameter \\#2 \\$g of static method ScssPhp\\\\ScssPhp\\\\Colors\\:\\:RGBaToColorName\\(\\) expects int, float\\|int\\|string given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#2 \\$origin of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:pushExtends\\(\\) expects array, array\\|null given\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Parameter \\#2 \\$previousScope of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:completeScope\\(\\) expects ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock, ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null given\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1501,42 +1396,32 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#3 \\$blackness of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:HWBtoRGB\\(\\) expects int, float\\|int given\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$callStack type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Parameter \\#3 \\$selfParent of method ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:compileChildrenNoReturn\\(\\) expects ScssPhp\\\\ScssPhp\\\\Block\\|null, object\\|null given\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$defaultValue has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$Infinity has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyArgumentList has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$NaN has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyList has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$defaultValue has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyMap has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyList has no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyMap has no typehint specified\\.$#"
-			count: 1
-			path: src/Compiler.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyString has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$emptyString has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1551,17 +1436,27 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$false has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$extends type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$null has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$false has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$nullString has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$null has no type specified\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$nullString has no type specified\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$parsedFiles \\(array\\<string, int\\>\\) does not accept array\\<int\\|string, bool\\|int\\>\\.$#"
 			count: 1
 			path: src/Compiler.php
 
@@ -1571,39 +1466,49 @@ parameters:
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$selfSelector has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$selfSelector has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$true has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$true has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$with has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$with has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$without has no typehint specified\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\:\\:\\$without has no type specified\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\:\\:\\$type \\(string\\) does not accept string\\|null\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$depth \\(int\\) in isset\\(\\) is not nullable\\.$#"
 			count: 1
 			path: src/Compiler.php
 
 		-
-			message: "#^Right side of && is always true\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\:\\:\\$children \\(array\\<ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\>\\) does not accept array\\<ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\|null\\>\\.$#"
+			count: 1
+			path: src/Compiler.php
+
+		-
+			message: "#^Variable \\$env might not be defined\\.$#"
 			count: 3
 			path: src/Compiler.php
 
 		-
-			message: "#^Variable \\$h might not be defined\\.$#"
-			count: 2
+			message: "#^Variable \\$storeEnv might not be defined\\.$#"
+			count: 1
 			path: src/Compiler.php
+
+		-
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$selectors type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Compiler/Environment.php
 
 		-
 			message: "#^Property ScssPhp\\\\ScssPhp\\\\Compiler\\\\Environment\\:\\:\\$store type has no value type specified in iterable type array\\.$#"
@@ -1616,197 +1521,12 @@ parameters:
 			path: src/Compiler/Environment.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Exception\\\\ParserException\\:\\:getSourcePosition\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Exception/ParserException.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Exception\\\\ParserException\\:\\:setSourcePosition\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Exception/ParserException.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Exception\\\\ParserException\\:\\:setSourcePosition\\(\\) has parameter \\$sourcePosition with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Exception/ParserException.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Exception\\\\ParserException\\:\\:\\$sourcePosition type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Exception/ParserException.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Formatter\\:\\:format\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: src/Formatter.php
-
-		-
-			message: "#^Parameter \\#3 \\$originalLine of method ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:addMapping\\(\\) expects int, int\\|null given\\.$#"
-			count: 2
-			path: src/Formatter.php
-
-		-
-			message: "#^Parameter \\#5 \\$sourceFile of method ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:addMapping\\(\\) expects string, string\\|null given\\.$#"
-			count: 2
-			path: src/Formatter.php
-
-		-
-			message: "#^Array \\(array\\<string\\>\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: src/Formatter/Expanded.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Formatter/Expanded.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: src/Formatter/Expanded.php
-
-		-
-			message: "#^Array \\(array\\<string\\>\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: src/Formatter/Nested.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Formatter/Nested.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: src/Formatter/Nested.php
-
-		-
 			message: "#^Property ScssPhp\\\\ScssPhp\\\\Formatter\\\\OutputBlock\\:\\:\\$selectors type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Formatter/OutputBlock.php
 
 		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$args\\.$#"
-			count: 2
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$cases\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$child\\.$#"
-			count: 2
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$cond\\.$#"
-			count: 3
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$dontAppend\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$end\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$hasValue\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$list\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$name\\.$#"
-			count: 4
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$prefix\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$queryList\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$selector\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$start\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$until\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$value\\.$#"
-			count: 2
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$var\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$vars\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Access to an undefined property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$with\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with array will always evaluate to false\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Cannot access property \\$children on ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
-			count: 6
-			path: src/Parser.php
-
-		-
-			message: "#^Cannot access property \\$comments on ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
-			count: 5
-			path: src/Parser.php
-
-		-
-			message: "#^Cannot access property \\$parent on ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Left side of && is always true\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:append\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1816,17 +1536,7 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:appendComment\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:appendComment\\(\\) has parameter \\$comment with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:assertPlainCssValid\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1836,7 +1546,12 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:enclosedExpression\\(\\) has parameter \\$allowedTypes with no value type specified in iterable type array\\.$#"
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:assertPlainCssValid\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser.php
+
+		-
+			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:assertPlainCssValid\\(\\) should return array but returns array\\|string\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1847,11 +1562,6 @@ parameters:
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:expHelper\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:extractLineNumbers\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1871,21 +1581,6 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:functionCallArgumentsList\\(\\) has parameter \\$out with no typehint specified\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:getSourcePosition\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:isPlainCssValidElement\\(\\) has parameter \\$allowExpression with no typehint specified\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:isPlainCssValidElement\\(\\) has parameter \\$parsed with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Parser.php
@@ -1901,17 +1596,7 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:last\\(\\) should return array\\|null but return statement is missing\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:matchString\\(\\) has parameter \\$m with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:parse\\(\\) should return ScssPhp\\\\ScssPhp\\\\Block but returns ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1931,22 +1616,7 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:seek\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:string\\(\\) has parameter \\$keepDelimWithInterpolation with no typehint specified\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:stripAssignmentFlags\\(\\) has parameter \\$value with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:stripAssignmentFlags\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -1956,43 +1626,18 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:stripOptionalFlag\\(\\) should return string but returns bool\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:unit\\(\\) has parameter \\$unit with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Parser.php
 
 		-
-			message: "#^Offset 0 does not exist on array\\(1 \\=\\> string\\)\\|null\\.$#"
+			message: "#^PHPDoc tag @var for variable \\$nextValue has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Parser.php
 
 		-
-			message: "#^Offset 0 does not exist on null\\.$#"
-			count: 2
-			path: src/Parser.php
-
-		-
-			message: "#^Offset 1 does not exist on array\\(1 \\=\\> string\\)\\|null\\.$#"
-			count: 2
-			path: src/Parser.php
-
-		-
-			message: "#^Offset 1 does not exist on null\\.$#"
+			message: "#^PHPDoc tag @var for variable \\$value has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^PHPDoc tag @param has invalid value \\(\\$out\\)\\: Unexpected token \"\\$out\", expected type at offset 128$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Parameter \\#1 \\$char of method ScssPhp\\\\ScssPhp\\\\Parser\\:\\:matchChar\\(\\) expects string, string\\|true given\\.$#"
-			count: 3
 			path: src/Parser.php
 
 		-
@@ -2006,12 +1651,7 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Block\\:\\:\\$parent \\(ScssPhp\\\\ScssPhp\\\\Block\\) does not accept ScssPhp\\\\ScssPhp\\\\Block\\|null\\.$#"
-			count: 1
-			path: src/Parser.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\Parser\\:\\:\\$charset type has no value type specified in iterable type array\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\Parser\\:\\:\\$logger is never read, only written\\.$#"
 			count: 1
 			path: src/Parser.php
 
@@ -2051,9 +1691,14 @@ parameters:
 			path: src/Parser.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:generateJson\\(\\) should return string but returns string\\|false\\.$#"
+			message: "#^Call to function assert\\(\\) with false and 'unknown format' will always evaluate to false\\.$#"
 			count: 1
-			path: src/SourceMap/SourceMapGenerator.php
+			path: src/Serializer/SerializeVisitor.php
+
+		-
+			message: "#^Negated boolean expression is always true\\.$#"
+			count: 1
+			path: src/Serializer/SerializeVisitor.php
 
 		-
 			message: "#^Method ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:getSourcesContent\\(\\) should return array\\<string\\>\\|null but returns array\\<int, bool\\|string\\>\\.$#"
@@ -2061,27 +1706,7 @@ parameters:
 			path: src/SourceMap/SourceMapGenerator.php
 
 		-
-			message: "#^Method ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:saveMap\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: src/SourceMap/SourceMapGenerator.php
-
-		-
-			message: "#^Parameter \\#1 \\$file of function file_put_contents expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/SourceMap/SourceMapGenerator.php
-
-		-
-			message: "#^Parameter \\#1 \\$path of function dirname expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/SourceMap/SourceMapGenerator.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:\\$contentsMap type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/SourceMap/SourceMapGenerator.php
-
-		-
-			message: "#^Property ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:\\$options \\(array\\('sourceRoot' \\=\\> string, 'sourceMapFilename' \\=\\> string\\|null, 'sourceMapURL' \\=\\> string\\|null, 'sourceMapWriteTo' \\=\\> string\\|null, 'outputSourceFiles' \\=\\> bool, 'sourceMapRootpath' \\=\\> string, 'sourceMapBasepath' \\=\\> string\\)\\) does not accept array\\<string, bool\\|string\\|null\\>\\.$#"
+			message: "#^Property ScssPhp\\\\ScssPhp\\\\SourceMap\\\\SourceMapGenerator\\:\\:\\$options \\(array\\{sourceRoot\\: string, sourceMapFilename\\: string\\|null, sourceMapURL\\: string\\|null, sourceMapWriteTo\\: string\\|null, outputSourceFiles\\: bool, sourceMapRootpath\\: string, sourceMapBasepath\\: string\\}\\) does not accept non\\-empty\\-array\\<'outputSourceFiles'\\|'sourceMapBasepath'\\|'sourceMapFilename'\\|'sourceMapRootpath'\\|'sourceMapURL'\\|'sourceMapWriteTo'\\|'sourceRoot', bool\\|string\\|null\\>\\.$#"
 			count: 1
 			path: src/SourceMap/SourceMapGenerator.php
 
@@ -2094,4 +1719,3 @@ parameters:
 			message: "#^Parameter \\#1 \\$value of method ScssPhp\\\\ScssPhp\\\\Base\\\\Range\\:\\:includes\\(\\) expects float\\|int, float\\|int\\|string given\\.$#"
 			count: 1
 			path: src/Util.php
-

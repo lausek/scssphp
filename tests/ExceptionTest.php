@@ -13,7 +13,9 @@
 namespace ScssPhp\ScssPhp\Tests;
 
 use PHPUnit\Framework\TestCase;
+use ScssPhp\ScssPhp\CompilationResult;
 use ScssPhp\ScssPhp\Compiler;
+use ScssPhp\ScssPhp\Exception\SassException;
 use ScssPhp\ScssPhp\Logger\QuietLogger;
 
 /**
@@ -31,19 +33,10 @@ class ExceptionTest extends TestCase
      */
     public function testThrowError($scss, $expectedExceptionMessage)
     {
-        try {
-            $this->compile($scss);
-        } catch (\Exception $e) {
-            if (strpos($e->getMessage(), $expectedExceptionMessage) === false) {
-                $this->fail('Unexpected exception raised: ' . $e->getMessage() . ' vs ' . $expectedExceptionMessage);
-            }
+        $this->expectException(SassException::class);
+        $this->expectExceptionMessage($expectedExceptionMessage);
 
-            $this->assertTrue(true);
-
-            return;
-        }
-
-        $this->fail('Expected exception to be raised: ' . $expectedExceptionMessage);
+        $this->compile($scss);
     }
 
     /**
@@ -65,12 +58,6 @@ END_OF_SCSS
 END_OF_SCSS
                 ,
                 'unexpected }'
-            ],
-            [<<<'END_OF_SCSS'
-.test { color: #fff / 0; }
-END_OF_SCSS
-                ,
-                'color: Can\'t divide by zero'
             ],
             [<<<'END_OF_SCSS'
 .test {
@@ -98,6 +85,14 @@ div {
 END_OF_SCSS
                 ,
                 '$color: cobaltgreen is not a color.'
+            ),
+            array(<<<'END_OF_SCSS'
+div {
+  color: fade-out(#FFF, 100%);
+}
+END_OF_SCSS
+                ,
+                '$amount: Expected 100% to be within 0 and 1.'
             ),
             [<<<'END_OF_SCSS'
 BODY {
@@ -139,9 +134,36 @@ END_OF_SCSS
                 ,
                 'file not found for @import'
             ],
+            [<<<'END_OF_SCSS'
+.test {
+    $list: 1, 2, 3;
+    value: nth($list, 1.5);
+}
+END_OF_SCSS
+                ,
+                '1.5 is not an integer.'
+            ],
+            [<<<'END_OF_SCSS'
+.test {
+    $list: 1, 2, 3;
+    $new-list: set-nth($list, 1.5, 5);
+}
+END_OF_SCSS
+                ,
+                '1.5 is not an integer.'
+            ],
+            [
+                ".foo { } .bar { } /* comment with \xd6-character */",
+                'Invalid UTF-8 file',
+            ]
         ];
     }
 
+    /**
+     * @param string $str
+     *
+     * @return CompilationResult
+     */
     private function compile($str)
     {
         $scss = new Compiler();

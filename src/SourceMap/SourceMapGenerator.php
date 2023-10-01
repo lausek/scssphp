@@ -25,7 +25,7 @@ use ScssPhp\ScssPhp\FileReader\FileReaderInterface;
  *
  * @internal
  */
-class SourceMapGenerator
+final class SourceMapGenerator
 {
     /**
      * What version of source map does the generator generate?
@@ -38,7 +38,7 @@ class SourceMapGenerator
      * @var array
      * @phpstan-var array{sourceRoot: string, sourceMapFilename: string|null, sourceMapURL: string|null, sourceMapWriteTo: string|null, outputSourceFiles: bool, sourceMapRootpath: string, sourceMapBasepath: string}
      */
-    protected $defaultOptions = [
+    private $defaultOptions = [
         // an optional source root, useful for relocating source files
         // on a server or removing repeated values in the 'sources' entry.
         // This value is prepended to the individual entries in the 'source' field.
@@ -68,7 +68,7 @@ class SourceMapGenerator
      *
      * @var \ScssPhp\ScssPhp\SourceMap\Base64VLQ
      */
-    protected $encoder;
+    private $encoder;
 
     /**
      * Array of mappings
@@ -76,26 +76,19 @@ class SourceMapGenerator
      * @var array
      * @phpstan-var list<array{generated_line: int, generated_column: int, original_line: int, original_column: int, source_file: string}>
      */
-    protected $mappings = [];
-
-    /**
-     * Array of contents map
-     *
-     * @var array
-     */
-    protected $contentsMap = [];
+    private $mappings = [];
 
     /**
      * File to content map
      *
      * @var array<string, string>
      */
-    protected $sources = [];
+    private $sources = [];
 
     /**
      * @var array<string, int>
      */
-    protected $sourceKeys = [];
+    private $sourceKeys = [];
 
     /**
      * @var array
@@ -121,11 +114,11 @@ class SourceMapGenerator
     /**
      * Adds a mapping
      *
-     * @param integer $generatedLine   The line number in generated file
-     * @param integer $generatedColumn The column number in generated file
-     * @param integer $originalLine    The line number in original file
-     * @param integer $originalColumn  The column number in original file
-     * @param string  $sourceFile      The original source file
+     * @param int    $generatedLine   The line number in generated file
+     * @param int    $generatedColumn The column number in generated file
+     * @param int    $originalLine    The line number in original file
+     * @param int    $originalColumn  The column number in original file
+     * @param string $sourceFile      The original source file
      *
      * @return void
      */
@@ -143,37 +136,6 @@ class SourceMapGenerator
     }
 
     /**
-     * Saves the source map to a file
-     *
-     * @param string $content The content to write
-     *
-     * @return string
-     *
-     * @throws \ScssPhp\ScssPhp\Exception\CompilerException If the file could not be saved
-     * @deprecated
-     */
-    public function saveMap($content)
-    {
-        $file = $this->options['sourceMapWriteTo'];
-        $dir  = \dirname($file);
-
-        // directory does not exist
-        if (! is_dir($dir)) {
-            // FIXME: create the dir automatically?
-            throw new CompilerException(
-                sprintf('The directory "%s" does not exist. Cannot save the source map.', $dir)
-            );
-        }
-
-        // FIXME: proper saving, with dir write check!
-        if (file_put_contents($file, $content) === false) {
-            throw new CompilerException(sprintf('Cannot save the source map to "%s"', $file));
-        }
-
-        return $this->options['sourceMapURL'];
-    }
-
-    /**
      * Generates the JSON source map
      *
      * @param string $prefix A prefix added in the output file, which needs to shift mappings
@@ -182,7 +144,7 @@ class SourceMapGenerator
      *
      * @see https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/edit#
      */
-    public function generateJson($prefix = '')
+    public function generateJson(string $prefix = ''): string
     {
         $sourceMap = [];
         $mappings  = $this->generateMappings($prefix);
@@ -208,7 +170,7 @@ class SourceMapGenerator
         // A list of original sources used by the 'mappings' entry.
         $sourceMap['sources'] = [];
 
-        foreach ($this->sources as $sourceUri => $sourceFilename) {
+        foreach ($this->sources as $sourceFilename) {
             $sourceMap['sources'][] = $this->normalizeFilename($sourceFilename);
         }
 
@@ -230,7 +192,15 @@ class SourceMapGenerator
             unset($sourceMap['sourceRoot']);
         }
 
-        return json_encode($sourceMap, JSON_UNESCAPED_SLASHES);
+        $jsonSourceMap = json_encode($sourceMap, JSON_UNESCAPED_SLASHES);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \RuntimeException(json_last_error_msg());
+        }
+
+        assert($jsonSourceMap !== false);
+
+        return $jsonSourceMap;
     }
 
     /**
@@ -238,7 +208,7 @@ class SourceMapGenerator
      *
      * @return string[]|null
      */
-    protected function getSourcesContent()
+    private function getSourcesContent(): ?array
     {
         if (empty($this->sources)) {
             return null;
@@ -260,7 +230,7 @@ class SourceMapGenerator
      *
      * @return string
      */
-    public function generateMappings($prefix = '')
+    public function generateMappings(string $prefix = ''): string
     {
         if (! \count($this->mappings)) {
             return '';
@@ -333,11 +303,11 @@ class SourceMapGenerator
      *
      * @param string $filename
      *
-     * @return integer|false
+     * @return int|false
      */
-    protected function findFileIndex($filename)
+    private function findFileIndex(string $filename)
     {
-        return $this->sourceKeys[$filename];
+        return $this->sourceKeys[$filename] ?? false;
     }
 
     /**
@@ -347,7 +317,7 @@ class SourceMapGenerator
      *
      * @return string
      */
-    protected function normalizeFilename($filename)
+    private function normalizeFilename(string $filename): string
     {
         $filename = $this->fixWindowsPath($filename);
         $rootpath = $this->options['sourceMapRootpath'];
@@ -369,12 +339,12 @@ class SourceMapGenerator
     /**
      * Fix windows paths
      *
-     * @param string  $path
-     * @param boolean $addEndSlash
+     * @param string $path
+     * @param bool   $addEndSlash
      *
      * @return string
      */
-    public function fixWindowsPath($path, $addEndSlash = false)
+    public function fixWindowsPath(string $path, bool $addEndSlash = false): string
     {
         $slash = ($addEndSlash) ? '/' : '';
 

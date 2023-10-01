@@ -19,7 +19,7 @@ namespace ScssPhp\ScssPhp\SourceMap;
  *
  * @internal
  */
-class Base64
+final class Base64
 {
     /**
      * @var array<int, string>
@@ -164,7 +164,7 @@ class Base64
     /**
      * Convert to base64
      *
-     * @param integer $value
+     * @param int $value
      *
      * @return string
      */
@@ -178,7 +178,7 @@ class Base64
      *
      * @param string $value
      *
-     * @return integer
+     * @return int
      */
     public static function decode($value)
     {

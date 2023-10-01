@@ -1,5 +1,134 @@
 # Changelog
 
+## **1.11.1** -- September 24, 2023
+
+**Added**
+
+* Add dedicated error handling when passing invalid UTF-8 (@stof)
+
+**Fixed**
+
+* Fix extending a selector using `:is()` (@ssltg)
+
+## **1.11.0** -- September 2, 2022
+
+**Deprecated**
+
+* Deprecate passing a limit with unit to `random()` (@stof)
+
+**Added**
+
+* Add support for empty fallback in `var()` (@stof)
+
+**Fixed**
+
+* Fix the handling of mixed case operators in media queries (@stof)
+
+**Changed**
+
+* Improve error messages for incorrect units in color functions (@stof)
+
+## **1.10.5** -- July 27, 2022
+
+**Fixed**
+
+* Fix the handling of non-integer numbers in `nth` and `set-nth` (@max-m)
+
+## **1.10.4** -- July 26,2022
+
+**Fixed**
+
+* Remove false positive deprecation warnings when compiling Bootstrap 5.2.0 (@stof)
+
+**Changed**
+
+* Remove usage of interpolation syntax deprecated in PHP 8.2 (@shyim)
+
+## **1.10.3** -- May 16, 2022
+
+**Fixed**
+
+* Fix the handling of nested at-root in mixins (@stof)
+
+**Changed**
+
+* Mark the logger implementations as `@final` to prepare for 2.0 (@stof)
+
+## **1.10.2** -- March 2, 2022
+
+**Fixed**
+
+* Fix the tracking of the location of comments when using sourcemaps (@stof)
+* Fix the leaking of an output buffer in case of error during the formatting of the output (@stof)
+
+## **1.10.1** -- February 28, 2022
+
+**Fixed**
+
+* Fix the handling of `rgb`, `rgba`, `hsl` and `hsla` called with a trailing comma in arguments (@stof)
+* Fix the handling of negative index in `str-insert` (@stof)
+
+## **1.10.0** -- January 6, 2022
+
+**Fixed**
+
+* Fix the generation of source maps without an input path (@stof)
+* Fix the handling of list separators in list functions (@stof)
+* Add explicit return types to avoid warnings from the Symfony DebugClassLoader (@shyim)
+
+**Changed**
+
+* Use double quotes to render strings in the generated CSS by default, to match dart-sass (@stof)
+* Remove usage of dynamic properties to avoid deprecation warnings in PHP 8.2-dev (@stof)
+* Change the order of selectors in the output of `selector-append` to match dart-sass (@stof)
+* Mark AST-only types as internal in `\ScssPhp\ScssPhp\Type` (@stof)
+* Preserve the `!` for preserved comments in the compressed output, to match dart-sass (@stof)
+
+## **1.9.0** -- December 13, 2021
+
+**Added**
+
+* Add support for deep map manipulation in `map-get`, `map-has-key` and `map-merge` (@stof)
+
+**Fixed**
+
+* Preserve the type of keys when iterating over maps (@stof)
+
+## **1.8.1** -- September 18, 2021
+
+**Added**
+
+* Fix compatibility with PHP 8.1 (@TimWolla, @stof)
+
+## **1.8.0** -- September 18, 2021
+
+**Deprecated**
+
+* Deprecate calling core functions with non-standard names. Due to the internal implementation of core functions, they were calling with different cases or different positions of `-` or `_` in the names (@stof)
+
+**Fixed**
+
+* Fix the computation of the hue of colors for some cases (@stof)
+
+## **1.7.0** -- September 15, 2021
+
+**Added**
+
+* Add support for a `charset` option to omit the charset declaration from the generated CSS (@stof)
+
+**Changed**
+
+* Add spec-compliant validation of arguments in several color functions (@stof)
+
+**Fixed**
+
+* Fix the handling of CSS variables in `rgba()` (@stof)
+* Fix the handling of unitless weights in `mix()` and `invert()` (@stof)
+* Fix the handling of amounts in `saturate()`, `desaturate()`, `fade-in()` and `fade-out()` (@stof)
+* Fix the handling of `@charset` in the Sass source (@stof)
+* Fix wrong deprecation warning about unterminated interpolation in discarded comments (@stof)
+* Fix file paths in error messages on Windows (@stof)
+
 ## **1.6.0** -- June 30, 2021
 
 **Deprecated:**
@@ -51,7 +180,7 @@
 * Add support for `$blackness` and `$whiteness` in `adjust-color`, `change-color` and `scale-color` (@Cerdic)
 * Add a new `compileString` method returning a `CompilationResult` (@Cerdic, @stof)
 * Add a new `checkImportResolutions` cache option to invalidate the compilation cache if imports would resolve differently (@Cerdic)
-* Add a `LoggerInteface` to customize the handling of warning and debug messages (@stof)
+* Add a `LoggerInterface` to customize the handling of warning and debug messages (@stof)
 * Add the `\ScssPhp\ScssPhp\Warn` API to report warnings in custom functions (@stof)
 * Add `Compiler::replaceVariables` and `Compiler::addVariables` to manage custom variables (@stof)
 * Add the `\ScssPhp\ScssPhp\ValueConverter` to produce values in the Sass value representation (@stof)
@@ -282,7 +411,7 @@
 
 ## **1.0.0** -- June 4, 2019
   * Moving development to ScssPhp organization, https://github.com/scssphp/
-  * Online documentation can be found at http://scssphp.github.com/scssphp/
+  * Online documentation can be found at https://scssphp.github.io/scssphp/
   * Renamed namespace from Leafo to ScssPhp
 
 ## **0.8.4** -- June 18, 2019
@@ -629,7 +758,7 @@
   * Add `ie_hex_str`, `abs`, `min`, `max` functions (Martin Hasoň)
   * Ignore expressions inside of `calc()` (Martin Hasoň)
   * Improve operator evaluation (Martin Hasoň)
-  * Add [`@content`](http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixin-content) support.
+  * Add [`@content`](https://sass-lang.com/documentation/at-rules/mixin/#content-blocks) support.
   * Misc bug fixes.
 
 ## **0.0.3** -- August 2nd, 2012

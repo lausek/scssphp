@@ -47,8 +47,8 @@ There are 3 kinds of arguments that can be declared:
   be the last one.
 
 The compiler will take care of validating arguments against the function
-signature, supporting the same features that for calls to functions defined in
-SCSS directly. However, it is still the responsibility of the callable to
+signature, supporting the same features as for calls to functions defined in
+Sass directly. However, it is still the responsibility of the callable to
 validate the values themselves. The `Compiler::assert*` helpers should be used
 to validate the type, providing the argument name for better error reporting.
 To report custom errors, the callable must use the
@@ -111,7 +111,7 @@ The direct migration is to declare the function with a rest argument:
  $compiler->registerFunction(
    'foo',
 -  function ($positionalArgs, $keywordArgs) use ($compiler) {
-+  function ($args) use ($compiler) {
++  function (array $args) use ($compiler) {
 +    $restArgument = $args[0];
 +    $positionalArgs = $restArgument[2];
 +    $keywordArgs = $compiler->getArgumentListKeywords($restArgument);
@@ -122,7 +122,7 @@ The direct migration is to declare the function with a rest argument:
  );
 ```
 
-However, in most cases, function actually expect a given signature implicitly
+However, in most cases, functions actually expect a given signature implicitly
 rather than accepting anything. In such case, it is better to migrate to an
 explicit signature and to rework the callable to account for that.
 
@@ -134,4 +134,4 @@ When the error is related to the validation of an argument, the
 `SassScriptException::forArgument` method should be used to instantiate the
 exception.
 
-Warnings can be reported using the `\ScssPhp\ScssPhp\Warn` API:
+Warnings can be reported using the `\ScssPhp\ScssPhp\Warn` API.
